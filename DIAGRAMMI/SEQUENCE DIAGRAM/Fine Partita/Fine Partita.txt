@@ -1,0 +1,13 @@
+@startuml
+actor Sistema
+participant Gamemanager
+participant Hero
+participant leaderboard
+
+note over Hero : HP <= 0
+
+Gamemanager -> Sistema : Mostra messaggio di game over
+Gamemanager -> leaderboard : salva_partita(Hero, room_number)
+Gamemanager -> leaderboard : mostra_leaderboard()
+
+@enduml

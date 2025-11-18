@@ -1,0 +1,22 @@
+@startuml
+actor Sistema
+participant Gamemanager
+participant Hero
+participant Enemy
+
+note over Gamemanager : Questo flusso si attiva \ndopo la sconfitta del nemico
+
+Gamemanager -> Hero : Aggiunge monete (reward)
+Gamemanager -> Hero : Recupera 75 HP (senza superare max)
+Gamemanager -> Hero : mostra_attrezzatura()
+
+Gamemanager -> Sistema : Genera 3 nuove armi (casuali)
+Sistema -> Giocatore : Mostra opzione di scelta arma
+Giocatore -> Gamemanager : Seleziona nuova arma
+Gamemanager -> Hero : Equipaggia nuova arma
+
+Gamemanager -> Gamemanager : Incrementa numero stanza
+Gamemanager -> Gamemanager : next_encounter()
+Gamemanager -> Enemy : Crea nuovo nemico o boss
+
+@enduml

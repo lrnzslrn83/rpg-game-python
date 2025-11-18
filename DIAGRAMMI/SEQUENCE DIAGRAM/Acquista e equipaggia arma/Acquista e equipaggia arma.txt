@@ -1,0 +1,21 @@
+@startuml
+actor Giocatore
+participant Gamemanager
+participant Shop
+participant Hero
+participant Money
+
+Giocatore -> Gamemanager : Apri Shop
+Gamemanager -> Shop : new Shop()
+Shop -> Shop : show_items()
+Giocatore -> Shop : Sceglie oggetto (es. arma)
+
+Shop -> Money : spend(prezzo)
+alt Fondi sufficienti
+    Shop -> Gamemanager : restituisce arma
+    Gamemanager -> Hero : equip(arma)
+    Hero -> Hero : aggiorna arma attiva
+else Fondi insufficienti
+    Shop -> Giocatore : Mostra messaggio errore
+end
+@enduml

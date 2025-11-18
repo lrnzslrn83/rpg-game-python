@@ -1,0 +1,34 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+
+actor Giocatore
+actor Sistema
+
+rectangle "Sistema di Gioco" {
+    usecase "Avvia partita" as UC1
+    usecase "Equipaggia arma" as UC2
+    usecase "Equipaggia armatura" as UC3
+    usecase "Attacca nemico" as UC4
+    usecase "Acquista arma" as UC5
+    usecase "Acquista armatura" as UC6
+    usecase "Visualizza leaderboard" as UC7
+    usecase "Mostra attrezzatura" as UC8
+    usecase "Passa a nuovo scontro" as UC9
+    usecase "Fine partita" as UC10
+}
+
+Giocatore --> UC1
+Giocatore --> UC2
+Giocatore --> UC3
+Giocatore --> UC4
+Giocatore --> UC5
+Giocatore --> UC6
+Giocatore --> UC7
+Giocatore --> UC8
+
+Sistema --> UC9
+Sistema --> UC10
+Sistema --> UC7
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+actor Giocatore
+participant Gamemanager
+participant Hero
+participant Enemy
+
+Gamemanager -> Gamemanager : next_encounter()
+Gamemanager -> Enemy : new Enemy() o Boss()
+loop Finché entrambi vivi
+    Gamemanager -> Hero : get HP
+    Gamemanager -> Enemy : get HP
+    Hero -> Enemy : attack()
+    alt Nemico vivo
+        Enemy -> Hero : attack()
+    end
+    Giocatore -> Gamemanager : Premi Enter per continuare
+end
+
+alt Hero morto
+    Gamemanager -> leaderboard : salva_partita()
+    Gamemanager -> leaderboard : mostra_leaderboard()
+else Nemico morto
+    Gamemanager -> Hero : add reward
+    Gamemanager -> Hero : heal 75 HP
+    Gamemanager -> Hero : mostra_attrezzatura()
+end
+@enduml

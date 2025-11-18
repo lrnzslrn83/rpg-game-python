@@ -1,0 +1,43 @@
+File: Personaggio.py
+  Classe: Personaggio
+    Attributi: armi, armatura, health_max, health, name, money
+    Metodi: __init__, is_alive, attack, equip, equipaggia_armatura, mostra_attrezzatura
+  Classe: Hero
+    Attributi: health_bar, money
+    Metodi: __init__, equip
+  Classe: Enemy
+    Attributi: health_bar
+    Metodi: __init__, attack
+  Classe: Boss
+    Attributi: Nessuno
+    Metodi: __init__, attack
+
+File: Armatura.py
+  Classe: Armatura
+    Attributi: rarita, difesa, prezzo, nome
+    Metodi: __init__, __str__
+
+File: armi.py
+  Classe: Armi
+    Attributi: weapon_type, rarita, base_damage, name, value
+    Metodi: __init__, damage, __str__
+
+File: Shop.py
+  Classe: Shop
+    Attributi: prices, items
+    Metodi: __init__, show_items, buy
+
+File: GameManager.py
+  Classe: Gamemanager
+    Attributi: Hero, boss_names, enemy_pool, room_number
+    Metodi: __init__, boss_spawn_chance, next_encounter, start
+
+File: Money.py
+  Classe: Money
+    Attributi: value
+    Metodi: __init__, add, spend, get_balance
+
+File: Rarità.py
+  Classe: Rarita
+    Attributi: moltiplicatore, tipo
+    Metodi: __init__, random_rarita, __str__

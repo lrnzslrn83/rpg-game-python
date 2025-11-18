@@ -1,0 +1,112 @@
+UC1 – Avvia partita
+Obiettivo: Far iniziare una nuova avventura in modalità singolo contro nemici generati automaticamente.
+Attori: Giocatore
+Precondizioni: Il gioco è correttamente avviato.
+Trigger: Il giocatore lancia l'applicazione e inserisce il proprio nome.
+Sequenza primaria:
+1. Il sistema mostra un messaggio di benvenuto.
+2. Il giocatore digita il nome del proprio eroe (se lasciato vuoto, verrà chiamato “Eroe senza nome”).
+3. Il sistema crea un nuovo oggetto GameManager, inizializza l’eroe con 200 HP e 50 monete.
+4. L’eroe viene subito equipaggiato automaticamente con un’arma iniziale.
+5. Si entra nella prima stanza: inizia l’avventura.
+Postcondizioni: La partita è attiva e il primo nemico verrà generato.
+
+UC2 – Equipaggia arma
+Obiettivo: Cambiare o assegnare un’arma all’eroe.
+Attori: Giocatore
+Precondizioni: Il giocatore deve possedere almeno un’arma.
+Trigger: L’utente decide di cambiare l’arma attuale (es. dopo aver aperto una cassa).
+Sequenza primaria:
+1. Il sistema mostra le armi disponibili.
+2. Il giocatore ne seleziona una.
+3. Il sistema aggiorna l’equipaggiamento dell’eroe.
+Postcondizioni: L’eroe impugna la nuova arma selezionata.
+
+UC3 – Equipaggia armatura
+Obiettivo: Proteggere l’eroe con un’armatura acquistata.
+Attori: Giocatore
+Precondizioni: Il giocatore ha acquistato un’armatura.
+Trigger: Il giocatore conferma l’acquisto nel negozio.
+Sequenza primaria:
+1. L’armatura viene selezionata e acquistata.
+2. Il sistema la assegna automaticamente all’eroe.
+3. Gli HP massimi dell’eroe aumentano.
+Postcondizioni: L’eroe è equipaggiato con un’armatura e ha maggiore resistenza.
+
+UC4 – Attacca nemico
+Obiettivo: Gestire il combattimento tra l’eroe e un nemico (o boss) generato casualmente.
+Attori: Giocatore
+Precondizioni: È presente un nemico nella stanza.
+Trigger: Inizio scontro.
+Sequenza primaria:
+1. Il sistema mostra la salute di entrambi i personaggi.
+2. L’eroe attacca per primo.
+3. Se il nemico è ancora in vita, contrattacca.
+4. Il ciclo continua finché uno dei due viene sconfitto.
+Postcondizioni: Il vincitore prosegue, il perdente termina la partita o viene eliminato.
+
+UC5 – Acquista arma
+Obiettivo: Comprare un’arma dallo shop.
+Attori: Giocatore
+Precondizioni: Il giocatore ha abbastanza oro.
+Trigger: Accesso al negozio.
+Sequenza primaria:
+1. Il sistema presenta tre armi disponibili con prezzo e statistiche.
+2. Il giocatore seleziona quella desiderata.
+3. Il sistema scala l’importo e consegna l’arma.
+Postcondizioni: L’arma entra nell’inventario del giocatore.
+
+UC6 – Acquista armatura
+Obiettivo: Comprare un’armatura dallo shop.
+Attori: Giocatore
+Precondizioni: Il giocatore ha abbastanza oro.
+Trigger: Accesso al negozio.
+Sequenza primaria:
+1. Il sistema mostra una o più armature disponibili.
+2. Il giocatore ne sceglie una.
+3. Il prezzo viene scalato e l’armatura assegnata.
+Postcondizioni: Il personaggio riceve una protezione aggiuntiva.
+
+UC7 – Visualizza leaderboard
+Obiettivo: Mostrare i punteggi delle partite concluse.
+Attori: Giocatore, Sistema
+Precondizioni: Esistono partite precedenti salvate.
+Trigger: Alla fine della partita o su richiesta.
+Sequenza primaria:
+1. Il sistema accede al database locale (leaderboard.db).
+2. Recupera i punteggi ordinati.
+3. Mostra a schermo la classifica.
+Postcondizioni: Il giocatore può confrontare il proprio punteggio con gli altri.
+
+UC8 – Mostra attrezzatura
+Obiettivo: Far vedere al giocatore quale arma e armatura sta usando.
+Attori: Giocatore
+Trigger: Il giocatore richiede i dettagli.
+Sequenza primaria:
+1. Il sistema accede ai dati del personaggio.
+2. Mostra l’arma e l’armatura attualmente equipaggiate.
+Postcondizioni: Il giocatore conosce lo stato del proprio equipaggiamento.
+
+UC9 – Passa a nuovo scontro
+Obiettivo: Far proseguire la partita con un nuovo nemico.
+Attori: Sistema
+Precondizioni: Il nemico precedente è stato sconfitto.
+Trigger: Il giocatore è vivo e ha completato la stanza.
+Sequenza primaria:
+1. Il sistema assegna un bonus HP e oro.
+2. Viene offerta la possibilità di cambiare arma (cassa magica).
+3. Il numero della stanza aumenta.
+4. Viene generato un nuovo nemico o boss.
+5. Il combattimento successivo inizia.
+Postcondizioni: Il gioco continua nella stanza successiva.
+
+UC10 – Fine partita
+Obiettivo: Terminare la partita e registrare il risultato.
+Attori: Sistema
+Precondizioni: L’eroe è stato sconfitto.
+Trigger: HP dell’eroe scesi a zero.
+Sequenza primaria:
+1. Il sistema comunica al giocatore che è morto.
+2. Registra il punteggio nella leaderboard.
+3. Mostra la classifica dei migliori punteggi.
+Postcondizioni: La sessione di gioco è chiusa.

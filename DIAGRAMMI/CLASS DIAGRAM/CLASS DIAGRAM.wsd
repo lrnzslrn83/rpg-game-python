@@ -1,0 +1,144 @@
+@startuml
+title DIAGRAMMA UML
+skinparam classAttributeIconSize 0
+
+class Personaggio {
+    - armi
+    - armatura
+    - health_max
+    - health
+    - name
+    - money
+    + __init__()
+    + is_alive()
+    + attack()
+    + equip()
+    + equipaggia_armatura()
+}
+
+class Hero {
+    - health_bar
+    - money
+    + __init__()
+    + equip()
+}
+
+class Enemy {
+    - health_bar
+    + __init__()
+    + attack()
+}
+
+class Boss {
+    + __init__()
+    + attack()
+}
+
+class Armatura {
+    - rarita
+    - difesa
+    - prezzo
+    - nome
+    + __init__()
+    + __str__()
+}
+
+class armi {
+    - danno
+    - nome
+    - rarita
+    - prezzo
+    + __init__()
+    + __str__()
+}
+
+class Shop {
+    - lista_armature
+    - lista_armi
+    + __init__()
+    + mostra_armi()
+    + mostra_armature()
+    + acquista_arma()
+    + acquista_armatura()
+}
+
+class GameManager {
+    - hero
+    - enemy
+    + __init__()
+    + start_game()
+    + turn()
+    + fine_partita()
+}
+
+class Money {
+    - quantita
+    + __init__()
+    + spendi()
+    + guadagna()
+    + get_saldo()
+}
+
+class Rarita {
+    - tipo
+    - moltiplicatore
+    + __init__()
+    + random_rarita()
+    + __str__()
+}
+
+class healthbar {
+    - max_value
+    - current_value
+    + __init__()
+    + set_value()
+    + draw()
+}
+
+class leaderboard {
+    + aggiorna_leaderboard()
+    + mostra_leaderboard()
+}
+
+' Ereditarietà
+Personaggio <|-- Hero : "1..1 → 1"
+Personaggio <|-- Enemy : "1..1 → 1"
+Personaggio <|-- Boss : "1..1 → 1"
+
+' Composizioni / Associazioni con molteplicità
+Personaggio *-- Armatura : "1 → 0..1"
+Personaggio *-- armi : "1 → 0..1"
+Hero *-- Money : "1 → 1"
+Hero *-- healthbar : "1 → 1"
+Enemy *-- healthbar : "1 → 1"
+Shop *-- Armatura : "1 → 0..*"
+Shop *-- armi : "1 → 0..*"
+GameManager *-- Hero : "1 → 1"
+GameManager *-- Enemy : "1 → 1"
+Armatura *-- Rarita : "1 → 1"
+armi *-- Rarita : "1 → 1"
+GameManager --> leaderboard : "1 → 1"
+
+@enduml
+
+
+
+"""| Notazione | Significato               
+| --------- | -------------------------- |
+| `1`       | Uno e solo uno             |
+| `0..1`    | Nessuno o uno              |
+| `*`       | Qualsiasi numero (0 o più) |
+| `1..*`    | Almeno uno                 |
+| `0..*`    | Nessuno o più              |
+"""
+
+
+"""
+| Freccia        | Sintassi | Significato      |              |
+| -------------- | -------- | ---------------- | ------------ |
+| ◁ vuota        | \`<      | --\`             | Ereditarietà |
+| ◆ piena (nera) | `*--`    | Composizione     |              |
+| ◇ vuota        | `o--`    | Aggregazione     |              |
+| → normale      | `-->`    | Dipendenza / uso |              |
+
+"""

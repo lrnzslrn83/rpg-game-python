@@ -1,0 +1,19 @@
+@startuml
+actor Giocatore
+participant Main
+participant Gamemanager
+participant Hero
+
+Giocatore -> Main : Avvio applicazione
+Main -> Giocatore : Richiesta nome
+Giocatore -> Main : Inserisce nome
+
+Main -> Gamemanager : new Gamemanager(nome)
+Gamemanager -> Hero : new Hero(nome, 200 HP)
+Gamemanager -> Hero : set money = 50
+Gamemanager -> Hero : equip()
+
+Main -> Gamemanager : start()
+note right of Gamemanager : Avvia ciclo di gioco e prima stanza
+
+@enduml
